@@ -1,0 +1,12 @@
+# Initialize Homebrew environment variables
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Color Configuration
+export CLICOLOR=1
+export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+
+# PyEnv Configuration
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
