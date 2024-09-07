@@ -1,0 +1,28 @@
+{{- if (eq .chezmoi.os "darwin") -}}
+#!/bin/bash
+
+# Define the URLs for the application packages to be downloaded
+urls=(
+    "https://github.com/AliceWektron/assets/releases/download/Patched/BusyCal.zip"
+    "https://github.com/AliceWektron/assets/releases/download/Patched/DEVONthink.zip"
+    "https://github.com/AliceWektron/assets/releases/download/Patched/Surge.zip"
+    "https://github.com/AliceWektron/assets/releases/download/Patched/TablePlus.zip"
+)
+
+tmp_dir=$(mktemp -d)
+cd "$tmp_dir"
+
+# Iterate over each application URL to download and install
+for url in "${urls[@]}"; do
+    curl -L -o "$(basename "$url")" "$url"
+    unzip -q "$(basename "$url")"
+    app_path=$(find . -type d -name "*.app" | head -n 1)
+    
+    if [ -n "$app_path" ]; then
+        sudo mv "$app_path" /Applications/
+        sudo xattr -cr "/Applications/$(basename "$app_path")"
+    fi
+done
+
+rm -rf "$tmp_dir"
+{{ end -}}
