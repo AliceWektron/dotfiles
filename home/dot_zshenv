@@ -1,0 +1,25 @@
+# Terminal configuration
+export TERM="xterm-256color"
+
+# PATH modifications
+export PATH="/opt/homebrew/Cellar/bash/5.2.15/bin:$PATH"
+export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/qt@5/bin:$PATH"
+
+# Compilation flags
+export CFLAGS="-I/opt/homebrew/include"
+
+# Qt5-specific flags
+export LDFLAGS="-L/opt/homebrew/opt/qt@5/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/qt@5/include"
+
+# Package configuration
+export PKG_CONFIG_PATH="/opt/homebrew/opt/qt@5/lib/pkgconfig"
+# Python configuration
+export PYTHON_CONFIGURE_OPTS="--enable-optimizations --with-lto"
+
+# Volta configuration
+export PATH="$HOME/.volta/bin:$PATH"
+
