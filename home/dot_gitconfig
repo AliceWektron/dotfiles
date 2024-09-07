@@ -1,0 +1,6 @@
+[user]
+	name = Alice Wektron
+        email = alicewektron@pm.me
+	signingkey = 89BA52EA8513CB00
+[commit]
+	gpgSign = true

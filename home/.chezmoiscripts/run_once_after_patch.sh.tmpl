@@ -1,0 +1,112 @@
+{{- if (eq .chezmoi.os "darwin") -}}
+#!/bin/bash
+
+LIME='\033[0;32m'
+RESET_COLOR='\033[0m'
+
+# Ensure that the environment is correctly sourced
+zsh -i -c "
+    # Ensure that the environment is correctly sourced
+    if [ -f \"$HOME/.zshenv\" ] || [ -f \"$HOME/.zshrc\" ]; then
+        # Source ~/.zshenv if it exists
+        [ -f \"$HOME/.zshenv\" ] && echo -e \"\${LIME}Sourcing\${RESET_COLOR} ~/.zshenv to update environment variables\" && source \"$HOME/.zshenv\"
+
+        # Source ~/.zshrc if it exists
+        [ -f \"$HOME/.zshrc\" ] && echo -e \"\${LIME}Sourcing\${RESET_COLOR} ~/.zshrc for interactive shell configurations\" && source \"$HOME/.zshrc\"
+    fi
+"
+osascript -e 'tell application "System Events" to keystroke "r" using {control down, shift down}'
+
+# Archive File Associations
+duti -s com.aone.keka public.archive all 2>/dev/null
+duti -s com.aone.keka public.gzip-archive all 2>/dev/null
+duti -s com.aone.keka public.rar-archive all 2>/dev/null
+duti -s com.aone.keka public.7z-archive all 2>/dev/null
+duti -s com.aone.keka public.tar-archive all 2>/dev/null
+duti -s com.aone.keka public.zip all 2>/dev/null
+
+# PDF File Associations
+duti -s com.readdle.PDFExpert-Mac .pdf all 2>/dev/null
+
+# Video File Associations
+duti -s com.movist.MovistPro .mkv all 2>/dev/null
+duti -s com.movist.MovistPro .mov all 2>/dev/null
+duti -s com.movist.MovistPro .mp4 all 2>/dev/null
+# Apply patches to macOS applications
+
+function patch_appcleaner() { 
+	xxd -p -c 0 "$1/Contents/MacOS/App Cleaner 8" - | \
+	sed "s/41000f0b662e0f1f840000000000554889e5415550/41000f0b662e0f1f840000000000c34889e5415550/; \
+		 s/4889d84c89f24883c4205b415e5dc30f1f440000554889e54883ec20/4889d84c89f24883c4205b415e5dc30f1f44000048c7c001000000c3/; \
+		 s/e00313aae10314aafd7b43a9f44f42a9ff030191c0035fd6ffc300d1fd7b02a9/e00313aae10314aafd7b43a9f44f42a9ff030191c0035fd6200080d2c0035fd6/; \
+		 s/0a14200020d4f44fbea9/0a14200020d4c0035fd6/; " | \
+	xxd -r -p -c 0 - "$1/Contents/MacOS/App Cleaner 8"
+	codesign -f -s - "$1" && xattr -c -r "$1"
+	echo -e "${LIME}OK!${RESET_COLOR}"
+}; patch_appcleaner "/Applications/App Cleaner 8.app"
+
+function patch_bartender() {
+    xxd -p -c 0 "$1/Contents/MacOS/Bartender 5" - | \
+	sed "s/00008052d6010014/20008052d6010014/; \
+	     s/4489e04883c4285b/ffc0904883c4285b/;" | \
+    xxd -r -p -c 0 - "$1/Contents/MacOS/Bartender 5"
+    codesign -f -s - "$1" && xattr -c -r "$1"
+	echo -e "${LIME}OK!${RESET_COLOR}"
+}; patch_bartender "/Applications/Bartender 5.app"
+
+# Patch Forklift
+defaults write com.binarynights.ForkLift registrationData -data "7B226C6963656E73654B6579223A22424E464C343031312D46454544464143452D43414645424142452D4142434445463030222C226C6963656E73655F74797065223A312C226E616D65223A22412E4C2E492E432E45222C227175616E74697479223A31302C227369676E6174757265223A2242433241413743463130344641364237424237443134373236313139323642434631363038373830222C2276616C696469747944617465223A3934363638313230307D"
+
+# Enable AI features in PDF Expert
+defaults write com.readdle.PDFExpert-Mac TweakEnableCopilot -bool true
+
+# Add Vallum license key to the license file.
+sudo mkdir -p "/Library/Application Support/Vallum/Vallum 5/License"
+echo "A.L.I.C.E#318163315983723#%" | sudo tee "/Library/Application Support/Vallum/Vallum 5/License/license" > /dev/null
+
+# Download and deploy Ray.Pro
+curl -L https://github.com/AliceWektron/assets/releases/download/Patched/Ray.Pro -o ~/.bin/raycast/Ray.Pro
+chmod +x ~/.bin/raycast/Ray.Pro
+
+# The following process requires opening a new terminal window (WezTerm) for successful execution
+wezterm start -- zsh -i -c "
+  # Install Node.js, npm
+  volta install node &&
+  volta install npm &&
+
+  # Install PM2 globally
+  npm install -g pm2 &&
+
+  # Create the LaunchAgents directory if it doesn't exist
+  mkdir -p ~/Library/LaunchAgents &&
+
+  # Change ownership of the .pm2 directory to the current user
+  sudo chown -R $(whoami) ~/.pm2 &&
+
+  # Set the correct permissions for the pm2 log file
+  sudo chmod 644 ~/.pm2/pm2.log &&
+
+  # Configure PM2 to run on launchd as the current user
+  sudo env PATH=$PATH:$(dirname $(volta which node)) pm2 startup launchd -u $(whoami) --hp $HOME &&
+
+  # Start Ray.Pro with PM2 and save the process list
+  pm2 start '~/.bin/raycast/Ray.Pro --config ~/.bin/raycast/config.toml' --name Ray.Pro &&
+
+  # Save PM2 processes to ensure they restart on system boot
+  pm2 save &&
+
+  # Move PM2 plist to LaunchDaemons for system-wide management
+  sudo mv ~/Library/LaunchAgents/pm2.$(whoami).plist /Library/LaunchDaemons/pm2.$(whoami).plist &&
+
+  # Set correct permissions for the PM2 plist file in LaunchDaemons
+  sudo chmod 644 /Library/LaunchDaemons/pm2.$(whoami).plist &&
+
+  # Change ownership of the plist file to root:wheel
+  sudo chown root:wheel /Library/LaunchDaemons/pm2.$(whoami).plist &&
+
+  # Load the plist file with launchctl for system-wide management
+  sudo launchctl load /Library/LaunchDaemons/pm2.$(whoami).plist &&
+
+  sleep 15
+"
+{{ end -}}

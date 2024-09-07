@@ -1,0 +1,9 @@
+##### Homebrew Configuration #####  
+eval "$(/opt/homebrew/bin/brew shellenv)"  # Initialize Homebrew environment  
+
+##### Color Configuration #####  
+export CLICOLOR=1  # Enable colored output for CLI tools  
+export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx  # Set color scheme for `ls`  
+
+##### Orbstack Initialization #####  
+source ~/.orbstack/shell/init.zsh 2>/dev/null || :  # Load Orbstack environment  
