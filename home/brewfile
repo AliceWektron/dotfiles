@@ -79,6 +79,7 @@ brew "qt"                                                   # Cross-platform app
 brew "qt@5"                                                 # Cross-platform application and UI framework
 brew 'python-tk'                                            # Python bindings for Tcl/Tk
 brew 'poetry'                                               # Python dependency management and packaging tool
+brew 'pyenv'                                                # Python version management
 brew 'rustup'                                               # Rust toolchain installer
 
 # Development utilities
