@@ -4,6 +4,8 @@
 LIME='\033[0;32m'
 RESET_COLOR='\033[0m'
 
+# Apply patches to macOS applications
+
 function patch_appcleaner() {
 	xxd -p -c 0 "$1/Contents/MacOS/App Cleaner 8" - | \
 	sed "s/e00313aae10314aafd7b43a9f44f42a9ff030191c0035fd6ffc300d1fd7b02a9/e00313aae10314aafd7b43a9f44f42a9ff030191c0035fd6200080d2c0035fd6/; \
@@ -53,5 +55,15 @@ function patch_pdfexpert() {
 	codesign -f -s - "$1" && xattr -c -r "$1"
 	echo -e "${LIME}OK!${RESET_COLOR}"
 }; patch_pdfexpert "/Applications/PDF Expert.app"
+
+# Download and deploy Raycast unblock
+curl -LOJs -o ~/.bin/raycast/raycast-unblock-app https://github.com/AliceWektron/assets/releases/download/Patched/raycast-unblock-app
+chmod +x ~/.bin/raycast/raycast-unblock-app
+
+# Download and configure LaunchDaemons plist for system startup
+sudo curl -LOJs -o /Library/LaunchDaemons/com.user.raycast-unblock-app.plist https://raw.githubusercontent.com/AliceWektron/assets/main/launchdaemons/com.user.raycast-unblock-app.plist
+sudo chown root:wheel /Library/LaunchDaemons/com.user.raycast-unblock-app.plist
+sudo chmod 644 /Library/LaunchDaemons/com.user.raycast-unblock-app.plist
+sudo launchctl load /Library/LaunchDaemons/com.user.raycast-unblock-app.plist
 
 {{ end -}}
