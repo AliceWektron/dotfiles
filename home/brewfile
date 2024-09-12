@@ -80,6 +80,7 @@ brew 'python-tk'                                            # Python bindings fo
 brew 'poetry'                                               # Python dependency management and packaging tool
 brew 'pyenv'                                                # Python version management
 brew 'rustup'                                               # Rust toolchain installer
+brew 'volta'                                                # JavaScript toolchain manager for reproducible environments
 
 # Development utilities
 brew 'gh'                                                   # GitHub interaction
