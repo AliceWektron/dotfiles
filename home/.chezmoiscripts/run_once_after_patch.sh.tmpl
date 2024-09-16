@@ -45,17 +45,6 @@ function patch_movist_pro() {
 	echo -e "${LIME}OK!${RESET_COLOR}"
 }; patch_movist_pro "/Applications/Movist Pro.app"
 
-function patch_pdfexpert() {
-	xxd -p -c 0 "$1/Contents/MacOS/PDF Expert" - | \
-	sed "s/f8430000f86f0300aa/f8430000f81f2003d5/; \
-	     s/00008052c0b301aa/20008052c0b301aa/; \
-	     s/2080a0d21f000014/600080521f000014/; \
-	     s/34ff2fe7f7ffff17/1a8000d21f000014/;" | \
-	xxd -r -p -c 0 - "$1/Contents/MacOS/PDF Expert"
-	codesign -f -s - "$1" && xattr -c -r "$1"
-	echo -e "${LIME}OK!${RESET_COLOR}"
-}; patch_pdfexpert "/Applications/PDF Expert.app"
-
 # Download and deploy Raycast unblock
 curl -LOJs -o ~/.bin/raycast/raycast-unblock-app https://github.com/AliceWektron/assets/releases/download/Patched/raycast-unblock-app
 chmod +x ~/.bin/raycast/raycast-unblock-app
