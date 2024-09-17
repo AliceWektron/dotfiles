@@ -49,4 +49,18 @@ function patch_movist_pro() {
 curl -LOJs -o ~/.bin/raycast/raycast-unblock-app https://github.com/AliceWektron/assets/releases/download/Patched/raycast-unblock-app
 chmod +x ~/.bin/raycast/raycast-unblock-app
 
+# Install Node.js, npm, and PM2
+volta install node
+volta install npm
+npm install -g pm2
+
+# Start Raycast unlock app with PM2 and save the process list
+pm2 start '~/.bin/raycast/raycast-unblock-app --config ~/.bin/raycast/config.toml' --name raycast-unlock-app
+pm2 save
+
+# Configure PM2 to start on boot and execute the registration command
+pm2_startup_output=$(pm2 startup)
+pm2_register_command=$(echo "$pm2_startup_output" | grep 'sudo env' | sed 's/^.*\(sudo env.*\)/\1/')
+eval "$pm2_register_command"
+
 {{ end -}}
