@@ -54,13 +54,18 @@ volta install node
 volta install npm
 npm install -g pm2
 
-# Start Raycast unlock app with PM2 and save the process list
+# Configure PM2 to run on launchd as user 'alice' with the correct Node.js path
+sudo env PATH=$PATH:/Users/alice/.volta/tools/image/node/20.17.0/bin pm2 startup launchd -u alice --hp /Users/alice
+
+# Start the Raycast unblocker application with PM2, and save the process list to ensure it auto-starts
 pm2 start '~/.bin/raycast/raycast-unblock-app --config ~/.bin/raycast/config.toml' --name raycast-unlock-app
 pm2 save
 
-# Configure PM2 to start on boot and execute the registration command
-pm2_startup_output=$(pm2 startup)
-pm2_register_command=$(echo "$pm2_startup_output" | grep 'sudo env' | sed 's/^.*\(sudo env.*\)/\1/')
-eval "$pm2_register_command"
+# Move PM2 plist to LaunchDaemons for system-wide management and load with launchctl
+sudo mv ~/Library/LaunchAgents/pm2.alice.plist /Library/LaunchDaemons/pm2.alice.plist
+sudo chmod 644 /Library/LaunchDaemons/pm2.alice.plist
+sudo chown root:wheel /Library/LaunchDaemons/pm2.alice.plist
+sudo launchctl load /Library/LaunchDaemons/pm2.alice.plist
+
 
 {{ end -}}
