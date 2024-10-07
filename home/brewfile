@@ -140,6 +140,7 @@ cask 'anytype'                                              # Local-first and en
 cask 'espanso'                                              # Live text expander (cross-platform)
 cask 'hovrly'                                               # Display and convert timezones time in different cities
 cask 'maccy'                                                # Clipboard manager (cross-platform)
+cask 'mediamate'                                            # UI replacement for volume, brightness and now playing controls
 cask 'numi'                                                 # Calculator app
 cask 'swish'                                                # Control windows and applications right from your trackpad
 cask 'trex'                                                 # Easy-to-use text extraction tool
