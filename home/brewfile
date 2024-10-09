@@ -108,7 +108,7 @@ cask 'whatsapp'                                             # Native desktop cli
 
 # Content Download and Management Tools
 cask 'qbittorrent'                                          # Peer-to-peer BitTorrent client
-brew 'youtube-dl'                                           # Download YouTube videos from the command-line
+brew 'yt-dlp'                                               # Feature-rich command-line audio/video downloader
 
 # Cryptocurrencies
 brew 'cointop'                                              # Interactive terminal based UI application for tracking cryptocurrencies
