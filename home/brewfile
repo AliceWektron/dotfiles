@@ -142,9 +142,9 @@ cask 'hovrly'                                               # Display and conver
 cask 'maccy'                                                # Clipboard manager (cross-platform)
 cask 'mediamate'                                            # UI replacement for volume, brightness and now playing controls
 cask 'numi'                                                 # Calculator app
+cask 'skim'                                                 # PDF reader and note-taking application
 cask 'swish'                                                # Control windows and applications right from your trackpad
 cask 'trex'                                                 # Easy-to-use text extraction tool
-cask 'pdf-expert'                                           # PDF editing and management
 
 # System monitoring and utilities
 cask 'app-cleaner', args: { require_sha: false }            # Application uninstaller
