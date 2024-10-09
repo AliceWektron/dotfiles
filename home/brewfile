@@ -135,6 +135,7 @@ cask 'little-snitch'                                        # Firewall app for t
 cask 'gpg-suite-no-mail'                                    # Tools to protect your files
 
 # Productivity
+cask 'airbuddy'                                             # AirPods companion app
 cask 'anki'                                                 # Memory training application
 cask 'anytype'                                              # Local-first and end-to-end encrypted notes app
 cask 'espanso'                                              # Live text expander (cross-platform)
