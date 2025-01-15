@@ -9,10 +9,10 @@ zsh -i -c "
     # Ensure that the environment is correctly sourced
     if [ -f \"$HOME/.zshenv\" ] || [ -f \"$HOME/.zshrc\" ]; then
         # Source ~/.zshenv if it exists
-        [ -f \"$HOME/.zshenv\" ] && echo \"Sourcing ~/.zshenv to update environment variables\" && source \"$HOME/.zshenv\"
+        [ -f \"$HOME/.zshenv\" ] && echo -e \"\${LIME}Sourcing\${RESET_COLOR} ~/.zshenv to update environment variables\" && source \"$HOME/.zshenv\"
 
         # Source ~/.zshrc if it exists
-        [ -f \"$HOME/.zshrc\" ] && echo \"Sourcing ~/.zshrc for interactive shell configurations\" && source \"$HOME/.zshrc\"
+        [ -f \"$HOME/.zshrc\" ] && echo -e \"\${LIME}Sourcing\${RESET_COLOR} ~/.zshrc for interactive shell configurations\" && source \"$HOME/.zshrc\"
     fi
 "
 osascript -e 'tell application "System Events" to keystroke "r" using {control down, shift down}'
@@ -97,7 +97,7 @@ wezterm start -- zsh -i -c "
   mkdir -p ~/Library/LaunchAgents &&
 
   # Change ownership of the .pm2 directory to the current user
-  sudo chown -R \$(whoami) ~/.pm2 &&
+  sudo chown -R $(whoami) ~/.pm2 &&
 
   # Set the correct permissions for the pm2 log file
   sudo chmod 644 ~/.pm2/pm2.log &&
@@ -112,16 +112,16 @@ wezterm start -- zsh -i -c "
   pm2 save &&
 
   # Move PM2 plist to LaunchDaemons for system-wide management
-  sudo mv ~/Library/LaunchAgents/pm2.\$(whoami).plist /Library/LaunchDaemons/pm2.\$(whoami).plist &&
+  sudo mv ~/Library/LaunchAgents/pm2.$(whoami).plist /Library/LaunchDaemons/pm2.$(whoami).plist &&
 
   # Set correct permissions for the PM2 plist file in LaunchDaemons
-  sudo chmod 644 /Library/LaunchDaemons/pm2.\$(whoami).plist &&
+  sudo chmod 644 /Library/LaunchDaemons/pm2.$(whoami).plist &&
 
   # Change ownership of the plist file to root:wheel
-  sudo chown root:wheel /Library/LaunchDaemons/pm2.\$(whoami).plist &&
+  sudo chown root:wheel /Library/LaunchDaemons/pm2.$(whoami).plist &&
 
   # Load the plist file with launchctl for system-wide management
-  sudo launchctl load /Library/LaunchDaemons/pm2.\$(whoami).plist &&
+  sudo launchctl load /Library/LaunchDaemons/pm2.$(whoami).plist &&
 
   sleep 15
 "
