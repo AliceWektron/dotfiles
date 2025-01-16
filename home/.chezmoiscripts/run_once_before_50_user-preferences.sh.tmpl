@@ -36,7 +36,7 @@ RESET_COLOR='\033[0m'
 
 # Current and total taslks, used for progress updates
 current_event=0
-total_events=73
+total_events=75
 
 # Check system is compatible
 if [ ! "$(uname -s)" = "Darwin" ]; then
@@ -102,7 +102,7 @@ echo -e "\n${PRIMARY_COLOR}Starting...${RESET_COLOR}"
 
 # Vzariables for system preferences
 COMPUTER_NAME="Hypernova"
-HOST_NAME2="hypernova"
+HOST_NAME="hypernova"
 HIGHLIGHT_COLOR="1 0.647059 0"
 
 # Quit System Preferences before starting
@@ -304,6 +304,12 @@ defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
 log_msg "Enable tap to click for the login screen"
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
+log_msg "Set mouse tracking speed"
+defaults write -g com.apple.mouse.scaling -float 3
+
+log_msg "Set mouse scrolling speed"
+defaults write -g com.apple.scrollwheel.scaling -float 1.5
 
 log_msg "Disable natural scrolling"
 defaults write -g com.apple.swipescrolldirection -bool false
