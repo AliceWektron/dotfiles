@@ -17,8 +17,10 @@ config.cursor_blink_ease_in = "Constant"  -- Cursor blink fade-in behavior (no f
 config.cursor_blink_ease_out = "Constant"  -- Cursor blink fade-out behavior (no fading)
 
 -- === Window Behavior ===
-config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"  -- Set window decorations (integrated buttons with resize)
+config.window_decorations = "RESIZE"  -- Set window decorations (integrated buttons with resize)
 config.native_macos_fullscreen_mode = false  -- Disables native fullscreen for macOS, use WezTerm's own fullscreen
+config.use_fancy_tab_bar = true  -- This separates tabs from titlebar controls
+config.tab_bar_at_bottom = false  -- Set to true if you want tabs at bottom
 
 -- === Keybindings ===
 config.keys = {
@@ -39,5 +41,3 @@ config.keys = {
 }
 
 return config
-
-
