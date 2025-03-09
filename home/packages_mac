@@ -176,6 +176,7 @@ cask 'brave-browser'                                        # Web browser focusi
 
 # Fonts
 cask 'font-hack-nerd-font'
+cask 'font-noto-sans-cjk'
 
 #############################################################
 # MAS Packages                                              #

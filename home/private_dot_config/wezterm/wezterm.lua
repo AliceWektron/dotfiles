@@ -4,7 +4,12 @@ local config = {}
 
 -- === Appearance ===
 config.color_scheme = "Catppuccin Macchiato"  -- Set color scheme
-config.font = wezterm.font("Hack Nerd Font Mono")  -- Set font (Nerd Font variant of Hack)
+config.color_scheme = "Catppuccin Macchiato"  -- Set color scheme
+config.font = wezterm.font_with_fallback({
+  "Hack Nerd Font Mono",  -- Primary font for English
+  "Noto Sans CJK SC",     -- Fallback for Simplified Chinese
+  "Noto Sans CJK TC",     -- Fallback for Traditional Chinese
+})
 config.font_size = 12.0  -- Set font size
 config.window_background_opacity = 0.9  -- Set transparency (0.0 is fully transparent, 1.0 is fully opaque)
 
