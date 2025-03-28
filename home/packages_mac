@@ -171,7 +171,7 @@ brew 'wakeonlan'                                               # Sends magic pac
 cask 'wezterm'                                                 # GPU-accelerated cross-platform terminal emulator and multiplexer
 
 # Web browsers
-cask 'brave-browser'                                           # Web browser focusing on privacy
+cask 'firefox'                                           # Web browser focusing on privacy
 
 ################################################################
 # Others                                                       #
