@@ -119,7 +119,8 @@ brew 'yt-dlp'                                                  # Feature-rich co
 
 # Cryptocurrency and Investment Tools
 brew 'cointop'                                                 # Interactive terminal based UI application for tracking cryptocurrencies
-cask 'sparrow'                                                 # Charting and social-networking for investment traders
+cask 'sparrow'                                                 # Bitcoin wallet application
+cask 'trezor-suite'                                            # Companion app for the Trezor hardware wallet
 
 # E-Book and Reading
 brew 'pandoc'                                                  # Swiss-army knife of markup format conversion
@@ -145,7 +146,6 @@ cask 'vallum'                                                  # Application fir
 cask 'gpg-suite-no-mail'                                       # Tools to protect your files
 
 # Productivity
-cask 'airbuddy'                                                # AirPods companion app
 cask 'anki'                                                    # Memory training application
 cask 'espanso'                                                 # Live text expander (cross-platform)
 cask 'hovrly'                                                  # Display and convert timezones time in different cities
@@ -171,7 +171,7 @@ brew 'wakeonlan'                                               # Sends magic pac
 cask 'wezterm'                                                 # GPU-accelerated cross-platform terminal emulator and multiplexer
 
 # Web browsers
-cask 'brave-browser'                                           # Web browser focusing on privacy
+cask 'firefox'                                           # Web browser focusing on privacy
 
 ################################################################
 # Others                                                       #
@@ -197,6 +197,7 @@ mas 'News Explorer', id: 1032670789
 # Productivity
 mas 'Amphetamine', id: 937984704
 mas 'Anybox', id: 1593408455
+mas 'APTV', id: 1630403500
 mas 'Goodnotes', id: 1444383602
 mas 'HazeOver', id: 430798174
 mas 'Keka', id: 470158793
