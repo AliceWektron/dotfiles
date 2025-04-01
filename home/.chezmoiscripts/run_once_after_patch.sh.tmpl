@@ -57,8 +57,19 @@ function patch_bartender() {
 # Patch Forklift
 defaults write com.binarynights.ForkLift registrationData -data "7B226C6963656E73654B6579223A22424E464C343031312D46454544464143452D43414645424142452D4142434445463030222C226C6963656E73655F74797065223A312C226E616D65223A22412E4C2E492E432E45222C227175616E74697479223A31302C227369676E6174757265223A2242433241413743463130344641364237424237443134373236313139323642434631363038373830222C2276616C696469747944617465223A3934363638313230307D"
 
-# Enable AI features in PDF Expert
-defaults write com.readdle.PDFExpert-Mac TweakEnableCopilot -bool true
+# Patch DaisyDisk
+mkdir -p "$HOME/Library/Application Support/DaisyDisk" || { echo "Failed to create DaisyDisk folder"; exit 1; }
+rm -rf "$HOME/Library/Application Support/DaisyDisk/BlackList.plist"
+defaults write "$HOME/Library/Application Support/DaisyDisk/License.DaisyDisk" License_CustomerName "A.L.I.C.E"
+defaults write "$HOME/Library/Application Support/DaisyDisk/License.DaisyDisk" License_RegistrationKey "DH7X8TKY-Q5E5T7QP-QNAKRRCM-S8MQPKHC-W2GMGPN8"
+mv "$HOME/Library/Application Support/DaisyDisk/License.DaisyDisk.plist" "$HOME/Library/Application Support/DaisyDisk/License.DaisyDisk"
+defaults write com.daisydiskapp.DaisyDiskStandAlone SUEnableAutomaticChecks -boolean NO
+defaults write com.daisydiskapp.DaisyDiskStandAlone MajorUpgrader_suppressUpgrades -boolean YES
+defaults write com.daisydiskapp.DaisyDiskStandAlone Application_isFirstLaunch -boolean NO
+defaults write com.daisydiskapp.DaisyDiskStandAlone SUSendProfileInfo -boolean NO
+if ! grep -q "daisydiskapp.com/purchase/getBlackListHash.php" /etc/hosts; then
+    sudo -- sh -c -e "echo '127.0.0.1 daisydiskapp.com/purchase/getBlackListHash.php' >> /etc/hosts" || { echo "Failed to block blacklist URL"; exit 1; }
+fi
 
 # Add Vallum license key to the license file.
 sudo mkdir -p "/Library/Application Support/Vallum/Vallum 5/License"
