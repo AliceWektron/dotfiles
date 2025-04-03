@@ -10,14 +10,14 @@ if [[ ! -d ~/Pictures/Wallpapers ]]; then
    mkdir -p ~/Pictures/Wallpapers
 fi
 
-curl -o ~/Pictures/Wallpapers/purple_nebula.png -L "https://github.com/AliceWektron/assets/blob/main/wallpapers/purple_nebula.png?raw=true"
+curl -o ~/Pictures/Wallpapers/blobs.webp -L "https://github.com/AliceWektron/assets/raw/refs/heads/main/wallpapers/blobs.webp"
 
-if [ ! -f ~/Pictures/Wallpapers/purple_nebula.png ]; then
+if [ ! -f ~/Pictures/Wallpapers/blobs.webp]; then
     echo "Error: Downloaded file not found"
     exit 1
 fi
 
-osascript -e 'tell application "System Events" to set picture of every desktop to ("~/Pictures/Wallpapers/purple_nebula.png" as POSIX file)'
+osascript -e 'tell application "System Events" to set picture of every desktop to ("~/Pictures/Wallpapers/blobs.webp" as POSIX file)'
 
 echo "Checking for Xcode CLI..."
 if pkgutil --pkg-info com.apple.pkg.CLTools_Executables >/dev/null 2>&1; then
