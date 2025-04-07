@@ -159,9 +159,9 @@ cask 'trex'                                                    # Easy-to-use tex
 
 # System monitoring and utilities
 cask 'app-cleaner', args: { require_sha: false }               # Application uninstaller
-cask 'bartender'                                               # Menu bar icon organizer
 cask 'betterdisplay'                                           # Display management tool
 brew 'duti'                                                    # Select default apps for documents and URL schemes on macOS
+cask 'jordanbaird-ice'                                         # Menu bar manager
 brew 'm-cli'                                                   # Swiss Army Knife for macOS
 cask 'pictogram'                                               # Customize and maintain app icons
 cask 'sloth'                                                   # Displays all open files and sockets in use by all running processes
