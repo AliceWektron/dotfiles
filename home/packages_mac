@@ -2,7 +2,6 @@
 cask_args appdir: '/Applications', require_sha: true
 
 # Taps
-tap 'homebrew/bundle'
 tap 'homebrew-ffmpeg/ffmpeg'
 
 ################################################################
@@ -139,7 +138,7 @@ cask 'macfuse'                                                 # FUSE file syste
 cask 'metaimage'                                               # Editor to read, write and edit images metadata
 
 # Multimedia Tools
-brew 'homebrew-ffmpeg/ffmpeg/ffmpeg', args: ['--with-fdk-aac'] # Play, record, convert, and stream audio and video
+brew 'homebrew-ffmpeg/ffmpeg/ffmpeg'                           # Play, record, convert, and stream audio and video
 
 # Network and Security11
 cask 'vallum'                                                  # Application firewall

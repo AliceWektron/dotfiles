@@ -6,9 +6,6 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'  # Enable case-insensitiv
 source ~/.powerlevel10k/powerlevel10k.zsh-theme # Load Powerlevel10k theme
 source ~/.p10k.zsh  # Load Powerlevel10k settings  
 
-##### Load Additional Environment Variables #####  
-. "$HOME/.local/bin/env"  
-
 ##### Command Correction #####  
 eval $(thefuck --alias)  # Set up alias for 'thefuck' correction tool  
 
@@ -50,6 +47,9 @@ alias lsp='ls -lvAh --color | awk -F"\t" "{k=0; for(i=0;i<=8;i++) k+=((substr(\$
 ##### System Utilities #####  
 alias vt="~/.bin/versiontracker/app"  # Launch macOS Version Tracker  
 alias rls="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user"  # Reset macOS Launch Services  
+
+##### BIP39 Tool #####
+alias bip39="~/.bin/bip39/app"
 
 ##### Network Functions #####  
 fp() {  
