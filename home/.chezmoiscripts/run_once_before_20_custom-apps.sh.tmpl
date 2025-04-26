@@ -1,6 +1,10 @@
 {{- if (eq .chezmoi.os "darwin") -}}
 #!/bin/bash
 
+# Homebrew core removed support for build options like --with-fdk-aac
+brew tap homebrew-ffmpeg/ffmpeg
+brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-fdk-aac
+
 # Define the URLs for the application packages to be downloaded
 urls=(
     "https://github.com/AliceWektron/assets/releases/download/Patched/BusyCal.zip"
