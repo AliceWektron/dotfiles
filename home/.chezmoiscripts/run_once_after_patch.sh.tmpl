@@ -35,11 +35,12 @@ duti -s com.movist.MovistPro .mp4 all 2>/dev/null
 # Apply patches to macOS applications
 
 function patch_appcleaner() { 
+    defaults delete com.apple.opencom.sync.plist 2> /dev/null
 	xxd -p -c 0 "$1/Contents/MacOS/App Cleaner 8" - | \
-    sed "s/e9d48b280055/e9d48b2800c3/; \
-	     s/554889e54883ec20498d7d30488d75e831d231c9e8cd/48c7c001000000c3498d7d30488d75e831d231c9e8cd/; \
-	     s/cf830914f85fbca9/cf830914c0035fd6/; \
-	     s/ffc300d1fd7b02a9fd83009180c20091e1230091020080d2030080d2e9/200080d2c0035fd6fd83009180c20091e1230091020080d2030080d2e9/; " | \
+    sed "s/e9bc8b280055/e9bc8b2800c3/; \
+        s/554889e54883ec20498d7d30488d75e831d231c9e895ae2d00/48c7c001000000c3498d7d30488d75e831d231c9e895ae2d00/; \
+        s/db830914f85fbca9/db830914c0035fd6/; \
+        s/ffc300d1fd7b02a9fd83009180c20091e1230091020080d2030080d2f5b10a94/200080d2c0035fd6fd83009180c20091e1230091020080d2030080d2f5b10a94/; " | \
 	xxd -r -p -c 0 - "$1/Contents/MacOS/App Cleaner 8"
 	codesign -f -s - "$1" && xattr -c -r "$1"
 	echo -e "${LIME}OK!${RESET_COLOR}"
