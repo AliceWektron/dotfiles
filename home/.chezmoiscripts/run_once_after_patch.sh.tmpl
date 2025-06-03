@@ -46,8 +46,14 @@ function patch_appcleaner() {
 	echo -e "${LIME}OK!${RESET_COLOR}"
 }; patch_appcleaner "/Applications/App Cleaner 8.app"
 
-# Patch Forklift
-defaults write com.binarynights.ForkLift registrationData -data "7B226C6963656E73654B6579223A22424E464C343031312D46454544464143452D43414645424142452D4142434445463030222C226C6963656E73655F74797065223A312C226E616D65223A22412E4C2E492E432E45222C227175616E74697479223A31302C227369676E6174757265223A2242433241413743463130344641364237424237443134373236313139323642434631363038373830222C2276616C696469747944617465223A3934363638313230307D"
+function patch_transmit() {
+    xxd -p -c 0 "$1/Contents/MacOS/Transmit" - | \
+	sed "s/ff4301d1f85f01a9f65702a9f44f03a9fd7b04a9fd030191f30300aae00302aa71c80494681000d0140542/c0035fd6f85f01a9f65702a9f44f03a9fd7b04a9fd030191f30300aae00302aa71c80494681000d0140542/; \
+	     s/f657bda9f44f01a9fd7b02a9fd830091b50e00b0b5/e0e18452c0035fd6fd7b02a9fd830091b50e00b0b5/;" | \
+    xxd -r -p -c 0 - "$1/Contents/MacOS/Transmit"
+    codesign -f -s - "$1" && xattr -c -r "$1"
+	echo -e "${LIME}OK!${RESET_COLOR}"
+}; patch_transmit "/Applications/Transmit.app"
 
 # Patch DaisyDisk
 mkdir -p "$HOME/Library/Application Support/DaisyDisk" || { echo "Failed to create DaisyDisk folder"; exit 1; }
