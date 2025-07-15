@@ -152,7 +152,6 @@ cask 'maccy'                                                   # Clipboard manag
 cask 'mediamate'                                               # UI replacement for volume, brightness and now playing controls
 cask 'numi'                                                    # Calculator app
 cask 'octarine'                                                # Markdown-based note-taking app
-cask 'raycast'                                                 # Control your tools with a few keystrokes
 cask 'swish'                                                   # Control windows and applications right from your trackpad
 cask 'trex'                                                    # Easy-to-use text extraction tool
 

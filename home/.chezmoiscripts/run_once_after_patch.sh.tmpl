@@ -78,51 +78,7 @@ sudo mkdir -p "/Library/Application Support/Vallum/Vallum 5/License"
 echo "A.L.I.C.E#318163315983723#%" | sudo tee "/Library/Application Support/Vallum/Vallum 5/License/license" > /dev/null
 sudo curl -L https://github.com/AliceWektron/assets/raw/refs/heads/main/cfgs/vallum/vallum.conf -o "/Library/Application Support/Vallum/Vallum 5/vallum.conf"
 
-# Download and deploy Ray.Pro
-curl -L https://github.com/AliceWektron/assets/releases/download/Patched/Ray.Pro -o ~/.bin/raycast/app
-
 # Clear all extended attributes (including the macOS quarantine flag) for all custom app binary
 find "$HOME/.bin" -type f -name app -exec xattr -cr {} +
 
-# The following process requires opening a new terminal window (WezTerm) for successful execution
-wezterm start -- zsh -i -c "
-  # Install Node.js, npm
-  volta install node &&
-  volta install npm &&
-
-  # Install PM2 globally
-  npm install -g pm2 &&
-
-  # Create the LaunchAgents directory if it doesn't exist
-  mkdir -p ~/Library/LaunchAgents &&
-
-  # Change ownership of the .pm2 directory to the current user
-  sudo chown -R $(whoami) ~/.pm2 &&
-
-  # Set the correct permissions for the pm2 log file
-  sudo chmod 644 ~/.pm2/pm2.log &&
-
-  # Configure PM2 to run on launchd as the current user
-  sudo env PATH=$PATH:$(dirname $(volta which node)) pm2 startup launchd -u $(whoami) --hp $HOME &&
-
-  # Start Ray.Pro with PM2 and save the process list
-  pm2 start '~/.bin/raycast/app --config ~/.bin/raycast/config.toml' --name Ray.Pro &&
-
-  # Save PM2 processes to ensure they restart on system boot
-  pm2 save &&
-
-  # Move PM2 plist to LaunchDaemons for system-wide management
-  sudo mv ~/Library/LaunchAgents/pm2.$(whoami).plist /Library/LaunchDaemons/pm2.$(whoami).plist &&
-
-  # Set correct permissions for the PM2 plist file in LaunchDaemons
-  sudo chmod 644 /Library/LaunchDaemons/pm2.$(whoami).plist &&
-
-  # Change ownership of the plist file to root:wheel
-  sudo chown root:wheel /Library/LaunchDaemons/pm2.$(whoami).plist &&
-
-  # Load the plist file with launchctl for system-wide management
-  sudo launchctl load /Library/LaunchDaemons/pm2.$(whoami).plist &&
-
-  sleep 15
-"
 {{ end -}}
