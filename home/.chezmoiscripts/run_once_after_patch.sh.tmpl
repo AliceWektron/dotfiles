@@ -34,6 +34,10 @@ duti -s com.movist.MovistPro .mov all 2>/dev/null
 duti -s com.movist.MovistPro .mp4 all 2>/dev/null
 # Apply patches to macOS applications
 
+# Append entries /etc/hosts
+echo -e "127.0.0.1 daisydiskapp.com\n127.0.0.1 api.devontechnologies.com" | sudo tee -a /etc/hosts >/dev/null
+sudo killall -HUP mDNSResponder
+
 function patch_appcleaner() { 
     defaults delete com.apple.opencom.sync.plist 2> /dev/null
 	xxd -p -c 0 "$1/Contents/MacOS/App Cleaner 8" - | \
