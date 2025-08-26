@@ -140,12 +140,13 @@ cask 'metaimage'                                               # Editor to read,
 # Multimedia Tools
 brew 'homebrew-ffmpeg/ffmpeg/ffmpeg'                           # Play, record, convert, and stream audio and video
 
-# Network and Security11
+# Network and Security
 cask 'vallum'                                                  # Application firewall
 cask 'gpg-suite-no-mail'                                       # Tools to protect your files
 
 # Productivity
 cask 'anki'                                                    # Memory training application
+cask 'bloom'                                                   # File manager
 cask 'espanso'                                                 # Live text expander (cross-platform)
 cask 'hovrly'                                                  # Display and convert timezones time in different cities
 cask 'maccy'                                                   # Clipboard manager (cross-platform)
@@ -156,9 +157,11 @@ cask 'swish'                                                   # Control windows
 cask 'trex'                                                    # Easy-to-use text extraction tool
 
 # System monitoring and utilities
+cask 'apparency'                                               # Inspect application bundles
 cask 'app-cleaner', args: { require_sha: false }               # Application uninstaller
 cask 'betterdisplay'                                           # Display management tool
 brew 'duti'                                                    # Select default apps for documents and URL schemes on macOS
+cask 'hazeover'                                                # Windows manager and desktop organiser
 cask 'jordanbaird-ice'                                         # Menu bar manager
 brew 'm-cli'                                                   # Swiss Army Knife for macOS
 cask 'pictogram'                                               # Customize and maintain app icons
@@ -187,19 +190,15 @@ cask 'font-noto-sans-cjk'
 mas 'Xcode', id: 497799835
 
 # Entertainment
-mas 'Infuse', id: 1136220934
+# mas 'Infuse', id: 1136220934
 
 # News
-mas 'News Explorer', id: 1032670789
+# mas 'News Explorer', id: 1032670789
 
 # Productivity
 mas 'Amphetamine', id: 937984704
-mas 'Anybox', id: 1593408455
-mas 'APTV', id: 1630403500
-mas 'Goodnotes', id: 1444383602
-mas 'HazeOver', id: 430798174
-mas 'Keka', id: 470158793
-mas 'rcmd', id: 1596283165
+# mas 'APTV', id: 1630403500
+# mas 'Goodnotes', id: 1444383602
 
 # Reference
 mas 'Lookupper', id: 1667225994
