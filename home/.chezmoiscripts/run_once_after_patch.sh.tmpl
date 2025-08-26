@@ -59,6 +59,9 @@ function patch_transmit() {
 	echo -e "${LIME}OK!${RESET_COLOR}"
 }; patch_transmit "/Applications/Transmit.app"
 
+# Patch Bloom
+defaults write com.asiafu.Bloom BloomLicenseKey -string "XXXXXXXX-XXXXXXXX-XXXXXXXX-XXXXXXXX"
+
 # Patch DaisyDisk
 mkdir -p "$HOME/Library/Application Support/DaisyDisk" || { echo "Failed to create DaisyDisk folder"; exit 1; }
 rm -rf "$HOME/Library/Application Support/DaisyDisk/BlackList.plist"
