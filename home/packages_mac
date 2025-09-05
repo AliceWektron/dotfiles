@@ -73,9 +73,6 @@ brew 'go'                                                      # Go Lang compile
 brew 'rustup'                                                  # Rust toolchain installer
 brew 'volta'                                                   # JavaScript toolchain manager for reproducible environments
 
-# DevOps & Containerization
-cask 'orbstack'                                                # Replacement for Docker Desktop
-
 # Performance & Benchmarking
 brew 'wrk'                                                     # HTTP benchmarking tool
 brew 'scc'                                                     # Fast and accurate code counter with complexity and COCOMO estimates
@@ -84,7 +81,6 @@ brew 'scc'                                                     # Fast and accura
 brew 'lynis'                                                   # System security scanning
 brew 'openssl'                                                 # Cryptography and SSL/TLS Toolkit
 cask 'suspicious-package', args: { require_sha: false }        # Inspect macOS packages
-cask 'veracrypt'                                               # File and volume encryption
 
 # System Utilities for Development
 brew 'terminal-notifier'                                       # Trigger macOS notifications
@@ -122,6 +118,7 @@ cask 'sparrow'                                                 # Bitcoin wallet 
 cask 'trezor-suite'                                            # Companion app for the Trezor hardware wallet
 
 # E-Book and Reading
+cask 'calibre'                                                 # E-books management software
 brew 'pandoc'                                                  # Swiss-army knife of markup format conversion
 cask 'fbreader'                                                # Epub reader
 
@@ -134,14 +131,12 @@ cask 'daisydisk', args: { require_sha: false }                 # Disk space visu
 cask 'find-any-file', args: { require_sha: false }             # File search utility
 cask 'transmit'                                                # File transfer application
 cask 'keka'                                                    # File archiver and compression tool
-cask 'macfuse'                                                 # FUSE file system support for macOS
 cask 'metaimage'                                               # Editor to read, write and edit images metadata
 
 # Multimedia Tools
 brew 'homebrew-ffmpeg/ffmpeg/ffmpeg'                           # Play, record, convert, and stream audio and video
 
 # Network and Security
-cask 'vallum'                                                  # Application firewall
 cask 'gpg-suite-no-mail'                                       # Tools to protect your files
 
 # Productivity
@@ -149,25 +144,24 @@ cask 'anki'                                                    # Memory training
 cask 'bloom'                                                   # File manager
 cask 'espanso'                                                 # Live text expander (cross-platform)
 cask 'hovrly'                                                  # Display and convert timezones time in different cities
+cask 'keepingyouawake'                                         # Tool to prevent the system from going into sleep mode
 cask 'maccy'                                                   # Clipboard manager (cross-platform)
-cask 'mediamate'                                               # UI replacement for volume, brightness and now playing controls
 cask 'numi'                                                    # Calculator app
 cask 'octarine'                                                # Markdown-based note-taking app
 cask 'swish'                                                   # Control windows and applications right from your trackpad
 cask 'trex'                                                    # Easy-to-use text extraction tool
 
 # System monitoring and utilities
-cask 'apparency'                                               # Inspect application bundles
+cask 'apparency', args: { require_sha: false }                 # Inspect application bundles
 cask 'app-cleaner', args: { require_sha: false }               # Application uninstaller
 cask 'betterdisplay'                                           # Display management tool
 brew 'duti'                                                    # Select default apps for documents and URL schemes on macOS
-cask 'hazeover'                                                # Windows manager and desktop organiser
+cask 'hazeover', args: { require_sha: false }                  # Windows manager and desktop organiser
 cask 'jordanbaird-ice'                                         # Menu bar manager
 brew 'm-cli'                                                   # Swiss Army Knife for macOS
 cask 'pictogram'                                               # Customize and maintain app icons
 cask 'sloth'                                                   # Displays all open files and sockets in use by all running processes
 cask 'soundsource', args: { require_sha: false }               # Sound and audio controller
-cask 'tg-pro'                                                  # Temperature monitoring, fan control, and diagnostics
 brew 'wakeonlan'                                               # Sends magic packets to wake up network-devices
 cask 'wezterm'                                                 # GPU-accelerated cross-platform terminal emulator and multiplexer
 
@@ -196,7 +190,6 @@ mas 'Xcode', id: 497799835
 # mas 'News Explorer', id: 1032670789
 
 # Productivity
-mas 'Amphetamine', id: 937984704
 # mas 'APTV', id: 1630403500
 # mas 'Goodnotes', id: 1444383602
 
