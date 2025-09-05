@@ -73,9 +73,6 @@ brew 'go'                                                      # Go Lang compile
 brew 'rustup'                                                  # Rust toolchain installer
 brew 'volta'                                                   # JavaScript toolchain manager for reproducible environments
 
-# DevOps & Containerization
-cask 'orbstack'                                                # Replacement for Docker Desktop
-
 # Performance & Benchmarking
 brew 'wrk'                                                     # HTTP benchmarking tool
 brew 'scc'                                                     # Fast and accurate code counter with complexity and COCOMO estimates
@@ -141,7 +138,6 @@ cask 'metaimage'                                               # Editor to read,
 brew 'homebrew-ffmpeg/ffmpeg/ffmpeg'                           # Play, record, convert, and stream audio and video
 
 # Network and Security
-cask 'vallum'                                                  # Application firewall
 cask 'gpg-suite-no-mail'                                       # Tools to protect your files
 
 # Productivity
@@ -150,7 +146,6 @@ cask 'bloom'                                                   # File manager
 cask 'espanso'                                                 # Live text expander (cross-platform)
 cask 'hovrly'                                                  # Display and convert timezones time in different cities
 cask 'maccy'                                                   # Clipboard manager (cross-platform)
-cask 'mediamate'                                               # UI replacement for volume, brightness and now playing controls
 cask 'numi'                                                    # Calculator app
 cask 'octarine'                                                # Markdown-based note-taking app
 cask 'swish'                                                   # Control windows and applications right from your trackpad
@@ -167,7 +162,6 @@ brew 'm-cli'                                                   # Swiss Army Knif
 cask 'pictogram'                                               # Customize and maintain app icons
 cask 'sloth'                                                   # Displays all open files and sockets in use by all running processes
 cask 'soundsource', args: { require_sha: false }               # Sound and audio controller
-cask 'tg-pro'                                                  # Temperature monitoring, fan control, and diagnostics
 brew 'wakeonlan'                                               # Sends magic packets to wake up network-devices
 cask 'wezterm'                                                 # GPU-accelerated cross-platform terminal emulator and multiplexer
 
