@@ -36,7 +36,7 @@ RESET_COLOR='\033[0m'
 
 # Current and total taslks, used for progress updates
 current_event=0
-total_events=75
+total_events=74
 
 # Check system is compatible
 if [ ! "$(uname -s)" = "Darwin" ]; then
@@ -419,9 +419,6 @@ defaults write com.apple.dock showhidden -bool true
 
 log_msg "Hide recent files from the dock"
 defaults write com.apple.dock show-recents -bool false
-
-log_msg "Run listed apps as background application (hide from Dock)"
-defaults write com.raycast.macos LSUIElement -bool true
 
 log_msg "Disable clicking of wallpaper to reveal desktop"
 defaults write com.apple.WindowManager EnableStandardClickToShowDesktop -int 0

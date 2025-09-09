@@ -142,6 +142,7 @@ cask 'gpg-suite-no-mail'                                       # Tools to protec
 # Productivity
 cask 'anki'                                                    # Memory training application
 cask 'bloom'                                                   # File manager
+cask 'devonthink'                                              # Collect, organise, edit and annotate documents
 cask 'espanso'                                                 # Live text expander (cross-platform)
 cask 'hovrly'                                                  # Display and convert timezones time in different cities
 cask 'keepingyouawake'                                         # Tool to prevent the system from going into sleep mode

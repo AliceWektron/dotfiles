@@ -72,9 +72,7 @@ defaults write com.daisydiskapp.DaisyDiskStandAlone SUEnableAutomaticChecks -boo
 defaults write com.daisydiskapp.DaisyDiskStandAlone MajorUpgrader_suppressUpgrades -boolean YES
 defaults write com.daisydiskapp.DaisyDiskStandAlone Application_isFirstLaunch -boolean NO
 defaults write com.daisydiskapp.DaisyDiskStandAlone SUSendProfileInfo -boolean NO
-if ! grep -q "daisydiskapp.com/purchase/getBlackListHash.php" /etc/hosts; then
-    sudo -- sh -c -e "echo '127.0.0.1 daisydiskapp.com/purchase/getBlackListHash.php' >> /etc/hosts" || { echo "Failed to block blacklist URL"; exit 1; }
-fi
+
 
 # Add Vallum license key to the license file.
 sudo mkdir -p "/Library/Application Support/Vallum/Vallum 5/License"
