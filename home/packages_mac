@@ -129,7 +129,6 @@ cask 'movist-pro'                                              # Media player
 cask 'a-better-finder-rename', args: { require_sha: false }    # File renaming utility
 cask 'daisydisk', args: { require_sha: false }                 # Disk space visualizer
 cask 'find-any-file', args: { require_sha: false }             # File search utility
-cask 'transmit'                                                # File transfer application
 cask 'keka'                                                    # File archiver and compression tool
 cask 'metaimage'                                               # Editor to read, write and edit images metadata
 
